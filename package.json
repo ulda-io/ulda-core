@@ -1,0 +1,73 @@
+{
+  "name": "ulda-core",
+  "version": "1.0.0",
+  "description": "Official low-level JavaScript implementation of the ULDA v1 state-lineage protocol.",
+  "private": true,
+  "author": {
+    "name": "Mark Shaposhnik"
+  },
+  "contributors": [
+    {
+      "name": "Vitalii Radko"
+    }
+  ],
+  "type": "module",
+  "main": "./dist/ulda-core.js",
+  "exports": {
+    ".": "./dist/ulda-core.js",
+    "./package.json": "./package.json"
+  },
+  "unpkg": "./dist/ulda-core.min.js",
+  "jsdelivr": "./dist/ulda-core.min.js",
+  "files": [
+    "ulda-core.js",
+    "ulda-sign.js",
+    "src/",
+    "dist/",
+    "docs/ULDA_BUILD.md",
+    "docs/ULDA_COMPACT_HEADER.md",
+    "docs/ULDA_PACK_COMPARISON.md",
+    "docs/ULDA_PACK_POLICY.md",
+    "docs/ULDA_TEST_VECTORS.md",
+    "test-vectors/",
+    "MANIFEST.md",
+    "SECURITY.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "ulda",
+    "state-lineage",
+    "witness-chain",
+    "cryptography",
+    "esm"
+  ],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ulda-io/ulda-core.git"
+  },
+  "homepage": "https://github.com/ulda-io/ulda-core#readme",
+  "bugs": {
+    "url": "https://github.com/ulda-io/ulda-core/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "check:bundle": "node scripts/check-bundle.js",
+    "compare:packs": "node scripts/compare-packs.js",
+    "generate:vectors": "node scripts/generate-test-vectors.js",
+    "verify:vectors": "node scripts/verify-test-vectors.js",
+    "test": "node --test",
+    "release:check": "npm test && npm run verify:vectors && npm run build && npm run check:bundle",
+    "prepublishOnly": "npm run release:check"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}

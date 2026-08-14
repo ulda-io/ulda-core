@@ -1,0 +1,462 @@
+{
+  "schema": "ulda-test-vectors",
+  "schemaVersion": 1,
+  "generatedBy": "scripts/generate-test-vectors.js",
+  "notes": [
+    "Synthetic deterministic blocks only.",
+    "Origin packages contain synthetic private test blocks and must not be used as real secrets.",
+    "Vector files do not include timestamps so diffs remain stable."
+  ],
+  "defaults": {
+    "N": 5,
+    "originSize": 256,
+    "blockLen": 32,
+    "hash": "SHA-256",
+    "exportFormat": "hex"
+  },
+  "blockRule": "byte[j] = (blockNumber * 32 + j) & 0xff",
+  "vectors": [
+    {
+      "id": "simpleSig-S-N5-SHA256",
+      "pack": "simpleSig",
+      "mode": "S",
+      "N": 5,
+      "hash": "SHA-256",
+      "originSize": 256,
+      "exportFormat": "hex",
+      "ages": {
+        "0": {
+          "origin": "00070501020000000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f",
+          "witness": "00070501020000000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f72dbb7336c76780023f83da4c355f2eeea85733b13d3477697917790c1229084312dcda4e0808ced2db2355b1217ea55f3de821c0657bcca10d2aa1bb84315c7609cf3537ea07665d48188289e027adde7f2ad7c60eb735f226c7237df310c62d3d658f2e049341e3e8d167bbae94af1dea6b7f0aab059dc0586675223455280",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "0",
+          "decodedWitnessIndex": "0",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "1": {
+          "origin": "00070501020100202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf",
+          "witness": "00070501020100202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3fca2a4fe727faaecf16ecd130a86e0885c5540c05375340445071c0657555fd42b6415816338f69e1f84e97ec63f82fd0c16166bbbcddb503c3bdd374c72bec818697504a1f95a47e97261af266d4d55ead3e15402214159e64bec24cecd92a70378a87e3c77c98cc43bb15b1f48d2971dee67694cce678f722f4165d00dc0470",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "1",
+          "decodedWitnessIndex": "1",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "2": {
+          "origin": "00070501020200404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedf",
+          "witness": "00070501020200404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f4d8d274ff7e176af977a95a0055c8c5f3478d38640343a060cee893e56f39957033339ef2901092963f8db6e32ab3d17ba2ce5e36bffef7a1283882865aeeb9502ccb61743849c146334300dded76bfd7e12dd9d4bf59ae7fa6a55129fae1a7a85cfb7bdac75ced04579866898fc2ada7f8d8e890a84aba515e5c437c5aa0403",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "2",
+          "decodedWitnessIndex": "2",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "4": {
+          "origin": "00070501020400808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+          "witness": "00070501020400808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f00e988677eecf94c0bb9233371c7c0d6f4db8ebdcdecb7c5ebaa666f17249227a937cc7c7cb0414317e1a794b81733e2e66ee28c875f1493197fce8cc48dc8d5d8c93442d25c2eaeb660990a6ed9e25773ce7bdfc5babea554b6a81331fc899ecefc1232dee44cc53fccf8cc078f657f4db4f1d0303725375a0694f7d395e2ea",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "4",
+          "decodedWitnessIndex": "4",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "5": {
+          "origin": "00070501020500a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+          "witness": "00070501020500a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfec071e0a0136c837c051cee6a7713edbaea6936712d1a3ca37e84fee3226e61dfaedece1ca62faf06b90391ce86864fe536f5cb501bbfad99cd99c9da083cddd4e05063392f42b5180353ef82da86c714042155044d91ab3253f1bab08120a0a0d750589fb8d437cf9b1c53a9dab74ab4b1e9f5fbe630c606cf16f2bd5ff47bc",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "5",
+          "decodedWitnessIndex": "5",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        }
+      },
+      "verify": [
+        {
+          "from": 0,
+          "to": 1,
+          "expected": true
+        },
+        {
+          "from": 1,
+          "to": 0,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 4,
+          "expected": true
+        },
+        {
+          "from": 0,
+          "to": 5,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 0,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "simpleSig-X-N5-SHA256",
+      "pack": "simpleSig",
+      "mode": "X",
+      "N": 5,
+      "hash": "SHA-256",
+      "originSize": 256,
+      "exportFormat": "hex",
+      "ages": {
+        "0": {
+          "origin": "00070502020000000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f",
+          "witness": "00070502020000000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1ffdeab9acf3710362bd2658cdc9a29e8f9c757fcf9811603a8c447cd1d91511089b7cfed560a377b11d79bccdd065aa371b9bf80d17060bf382afd504bdd257eb22e5191442c0634f8930e9e9db2aa7097e030f51d873699ba06c3cb631fd4b623317cff6efe483bf8dd627a9d8a3fe7d5aa925daf816d61cf290afa86b1313bc",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "0",
+          "decodedWitnessIndex": "0",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "1": {
+          "origin": "00070502020100202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf",
+          "witness": "00070502020100202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3fae02e99bbdd3713ac87427589a48fc45818ef9a7ecd27941142d8f6f61afb7c152e79b0131dfa000506d45a1f747fc2027f5c5360e1a57f52433b1c35f95f469bb19884053adb8c1116be60a642c581fe41262b267e0bc035702cff6fd3679a72f74c14b20813998f3adcc87f139143458b2942daa4683bbbbec7a3468a20a19",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "1",
+          "decodedWitnessIndex": "1",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "2": {
+          "origin": "00070502020200404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedf",
+          "witness": "00070502020200404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f9afaeef005e286957ee9a18a2481a75c7fc7ba74bae8de50ffa6127b12a62caeda3aad5ae3932185a8feaf0f0cb429359f04f1dc1e2363f89a5631599c5585bce521f285ad13e9cd8372ddaa618f175e04e59016dbf92157a8a645480f5fc680141c9b2e82b9f6198b70aa265e42ac4bd79c034cc146d479b033075e74721d75",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "2",
+          "decodedWitnessIndex": "2",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "4": {
+          "origin": "00070502020400808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+          "witness": "00070502020400808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fc39e13bbb05726a3c0747d3ca54c27e3f86bc10a1d3754cd031bd1ca7256c8ed6080000ec382ab65243823b9499f923b48cd7c3ea635ebf5e17543b7ba941462bf80ba7e391b26dfa3f1b1eb28d82414442a0fe740d605570a610f7e7fbcf7bda9ac8ae2a6b4459b30adeaba275d861bd83da9fffd71ad606c6f2009a28ad454",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "4",
+          "decodedWitnessIndex": "4",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "5": {
+          "origin": "00070502020500a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+          "witness": "00070502020500a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf71d74dcbd5103bb256e4c50a65b40f80baf983506d9260d70870ba3dc1c4d5cb779ba5779bd5694c9d40c7aeeaa67220bf29d177ef319a4c5f0f2840d52d53f41c47970568db86c8b59099c0492f776351065d456aee9a9ebee6bc31b1232353cae9cddbee7869167341f8419cd4f10f7a46c652ba611c1faf2af6267d8fcd46",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "5",
+          "decodedWitnessIndex": "5",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        }
+      },
+      "verify": [
+        {
+          "from": 0,
+          "to": 1,
+          "expected": true
+        },
+        {
+          "from": 1,
+          "to": 0,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 2,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 0,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "compactV1-S-N5-SHA256",
+      "pack": "compactV1",
+      "mode": "S",
+      "N": 5,
+      "hash": "SHA-256",
+      "originSize": 256,
+      "exportFormat": "hex",
+      "ages": {
+        "0": {
+          "origin": "003000000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f",
+          "witness": "003000000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f72dbb7336c76780023f83da4c355f2eeea85733b13d3477697917790c1229084312dcda4e0808ced2db2355b1217ea55f3de821c0657bcca10d2aa1bb84315c7609cf3537ea07665d48188289e027adde7f2ad7c60eb735f226c7237df310c62d3d658f2e049341e3e8d167bbae94af1dea6b7f0aab059dc0586675223455280",
+          "originByteLength": 163,
+          "witnessByteLength": 163,
+          "decodedOriginIndex": "0",
+          "decodedWitnessIndex": "0",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 3,
+          "witnessHeaderSize": 3,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "1": {
+          "origin": "00710000000010202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf",
+          "witness": "00710000000010202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3fca2a4fe727faaecf16ecd130a86e0885c5540c05375340445071c0657555fd42b6415816338f69e1f84e97ec63f82fd0c16166bbbcddb503c3bdd374c72bec818697504a1f95a47e97261af266d4d55ead3e15402214159e64bec24cecd92a70378a87e3c77c98cc43bb15b1f48d2971dee67694cce678f722f4165d00dc0470",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "1",
+          "decodedWitnessIndex": "1",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "2": {
+          "origin": "00710000000020404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedf",
+          "witness": "00710000000020404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f4d8d274ff7e176af977a95a0055c8c5f3478d38640343a060cee893e56f39957033339ef2901092963f8db6e32ab3d17ba2ce5e36bffef7a1283882865aeeb9502ccb61743849c146334300dded76bfd7e12dd9d4bf59ae7fa6a55129fae1a7a85cfb7bdac75ced04579866898fc2ada7f8d8e890a84aba515e5c437c5aa0403",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "2",
+          "decodedWitnessIndex": "2",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "4": {
+          "origin": "00710000000040808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+          "witness": "00710000000040808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f00e988677eecf94c0bb9233371c7c0d6f4db8ebdcdecb7c5ebaa666f17249227a937cc7c7cb0414317e1a794b81733e2e66ee28c875f1493197fce8cc48dc8d5d8c93442d25c2eaeb660990a6ed9e25773ce7bdfc5babea554b6a81331fc899ecefc1232dee44cc53fccf8cc078f657f4db4f1d0303725375a0694f7d395e2ea",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "4",
+          "decodedWitnessIndex": "4",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "5": {
+          "origin": "00710000000050a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+          "witness": "00710000000050a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfec071e0a0136c837c051cee6a7713edbaea6936712d1a3ca37e84fee3226e61dfaedece1ca62faf06b90391ce86864fe536f5cb501bbfad99cd99c9da083cddd4e05063392f42b5180353ef82da86c714042155044d91ab3253f1bab08120a0a0d750589fb8d437cf9b1c53a9dab74ab4b1e9f5fbe630c606cf16f2bd5ff47bc",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "5",
+          "decodedWitnessIndex": "5",
+          "decodedMode": "S",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        }
+      },
+      "verify": [
+        {
+          "from": 0,
+          "to": 1,
+          "expected": true
+        },
+        {
+          "from": 1,
+          "to": 0,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 4,
+          "expected": true
+        },
+        {
+          "from": 0,
+          "to": 5,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 0,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "compactV1-X-N5-SHA256",
+      "pack": "compactV1",
+      "mode": "X",
+      "N": 5,
+      "hash": "SHA-256",
+      "originSize": 256,
+      "exportFormat": "hex",
+      "ages": {
+        "0": {
+          "origin": "003040000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f",
+          "witness": "003040000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1ffdeab9acf3710362bd2658cdc9a29e8f9c757fcf9811603a8c447cd1d91511089b7cfed560a377b11d79bccdd065aa371b9bf80d17060bf382afd504bdd257eb22e5191442c0634f8930e9e9db2aa7097e030f51d873699ba06c3cb631fd4b623317cff6efe483bf8dd627a9d8a3fe7d5aa925daf816d61cf290afa86b1313bc",
+          "originByteLength": 163,
+          "witnessByteLength": 163,
+          "decodedOriginIndex": "0",
+          "decodedWitnessIndex": "0",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 3,
+          "witnessHeaderSize": 3,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "1": {
+          "origin": "00714000000010202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf",
+          "witness": "00714000000010202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3fae02e99bbdd3713ac87427589a48fc45818ef9a7ecd27941142d8f6f61afb7c152e79b0131dfa000506d45a1f747fc2027f5c5360e1a57f52433b1c35f95f469bb19884053adb8c1116be60a642c581fe41262b267e0bc035702cff6fd3679a72f74c14b20813998f3adcc87f139143458b2942daa4683bbbbec7a3468a20a19",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "1",
+          "decodedWitnessIndex": "1",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "2": {
+          "origin": "00714000000020404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedf",
+          "witness": "00714000000020404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f9afaeef005e286957ee9a18a2481a75c7fc7ba74bae8de50ffa6127b12a62caeda3aad5ae3932185a8feaf0f0cb429359f04f1dc1e2363f89a5631599c5585bce521f285ad13e9cd8372ddaa618f175e04e59016dbf92157a8a645480f5fc680141c9b2e82b9f6198b70aa265e42ac4bd79c034cc146d479b033075e74721d75",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "2",
+          "decodedWitnessIndex": "2",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "4": {
+          "origin": "00714000000040808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+          "witness": "00714000000040808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fc39e13bbb05726a3c0747d3ca54c27e3f86bc10a1d3754cd031bd1ca7256c8ed6080000ec382ab65243823b9499f923b48cd7c3ea635ebf5e17543b7ba941462bf80ba7e391b26dfa3f1b1eb28d82414442a0fe740d605570a610f7e7fbcf7bda9ac8ae2a6b4459b30adeaba275d861bd83da9fffd71ad606c6f2009a28ad454",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "4",
+          "decodedWitnessIndex": "4",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        },
+        "5": {
+          "origin": "00714000000050a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+          "witness": "00714000000050a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf71d74dcbd5103bb256e4c50a65b40f80baf983506d9260d70870ba3dc1c4d5cb779ba5779bd5694c9d40c7aeeaa67220bf29d177ef319a4c5f0f2840d52d53f41c47970568db86c8b59099c0492f776351065d456aee9a9ebee6bc31b1232353cae9cddbee7869167341f8419cd4f10f7a46c652ba611c1faf2af6267d8fcd46",
+          "originByteLength": 167,
+          "witnessByteLength": 167,
+          "decodedOriginIndex": "5",
+          "decodedWitnessIndex": "5",
+          "decodedMode": "X",
+          "decodedAlg": "SHA-256",
+          "decodedN": 5,
+          "originHeaderSize": 7,
+          "witnessHeaderSize": 7,
+          "originBodyLength": 160,
+          "witnessBodyLength": 160
+        }
+      },
+      "verify": [
+        {
+          "from": 0,
+          "to": 1,
+          "expected": true
+        },
+        {
+          "from": 1,
+          "to": 0,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 2,
+          "expected": false
+        },
+        {
+          "from": 0,
+          "to": 0,
+          "expected": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-check:
+    name: Node.js ${{ matrix.node }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run release checks
+        run: npm run release:check
+
+      - name: Verify committed bundles are current
+        run: git diff --exit-code -- dist/
+
+      - name: Pack and smoke-test the npm artifact
+        if: matrix.node == 22
+        shell: bash
+        run: |
+          pack_dir="$RUNNER_TEMP/ulda-pack"
+          smoke_dir="$RUNNER_TEMP/ulda-smoke"
+          mkdir -p "$pack_dir" "$smoke_dir"
+
+          npm pack --pack-destination "$pack_dir"
+          tarball="$(find "$pack_dir" -maxdepth 1 -type f -name '*.tgz' -print -quit)"
+          test -n "$tarball"
+
+          cd "$smoke_dir"
+          npm init -y >/dev/null
+          npm install --ignore-scripts "$tarball"
+
+          node --input-type=module -e "
+            import UldaSign from 'ulda-core';
+            const ulda = new UldaSign();
+            const origin0 = ulda.New();
+            const witness0 = await ulda.sign(origin0);
+            const origin1 = ulda.stepUp(origin0);
+            const witness1 = await ulda.sign(origin1);
+            if (!(await ulda.verify(witness0, witness1))) {
+              throw new Error('Packed artifact failed forward verification');
+            }
+            if (await ulda.verify(witness1, witness0)) {
+              throw new Error('Packed artifact accepted reversed verification');
+            }
+          "

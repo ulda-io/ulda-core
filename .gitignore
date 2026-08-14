@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+
+# Test and tooling output
+coverage/
+.nyc_output/
+.cache/
+.eslintcache
+tmp/
+temp/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+.npmrc
+.yarnrc.yml
+.pypirc
+.netrc
+.secrets/
+secrets/
+credentials*.json
+secrets*.json
+
+# Private keys and credential stores
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.kdbx
+id_rsa*
+id_ed25519*
+.ssh/
+.aws/
+.azure/
+.config/gcloud/
+
+# Package artifacts
+*.tgz
+
+# Internal security review material
+SECURITY_FINDINGS*.md
+.private/
+docs/internal/
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# dist/ is intentionally versioned
