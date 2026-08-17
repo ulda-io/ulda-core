@@ -1,0 +1,194 @@
+name: Publish to npm
+
+on:
+  pull_request:
+  push:
+    tags:
+      - "v*.*.*"
+
+# Do not grant permissions implicitly. Each job opts in only to what it needs.
+permissions: {}
+
+concurrency:
+  group: npm-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Package release candidate
+    if: github.repository == 'ulda-io/ulda-core'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out release commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false
+
+      - name: Validate package metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          package_name="$(node -p "require('./package.json').name")"
+          package_access="$(node -p "require('./package.json').publishConfig?.access ?? ''")"
+          package_registry="$(node -p "require('./package.json').publishConfig?.registry ?? ''")"
+
+          test "$package_name" = "ulda-core"
+          test "$package_access" = "public"
+          test "$package_registry" = "https://registry.npmjs.org/"
+
+      - name: Validate release tag
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          package_version="$(node -p "require('./package.json').version")"
+          package_private="$(node -p "String(require('./package.json').private === true)")"
+
+          test "$GITHUB_REF_TYPE" = "tag"
+          test "$package_private" = "false"
+
+          if [[ ! "$package_version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "Only stable SemVer releases are allowed, got: $package_version" >&2
+            exit 1
+          fi
+
+          test "$GITHUB_REF_NAME" = "v$package_version"
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+
+      - name: Verify npm version
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm_version="$(npm --version)"
+          node -e '
+            const [major, minor, patch] = process.argv[1].split(".").map(Number);
+            const supported = major > 11
+              || (major === 11 && minor > 5)
+              || (major === 11 && minor === 5 && patch >= 1);
+            if (!supported) process.exit(1);
+          ' "$npm_version"
+          echo "Using npm $npm_version"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run release checks
+        run: npm run release:check
+
+      - name: Verify committed bundles are current
+        run: git diff --exit-code -- dist/
+
+      - name: Pack and smoke-test the npm artifact
+        id: pack
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          pack_dir="$RUNNER_TEMP/ulda-pack"
+          smoke_dir="$RUNNER_TEMP/ulda-smoke"
+          mkdir -p "$pack_dir" "$smoke_dir"
+
+          npm pack --ignore-scripts --pack-destination "$pack_dir"
+          mapfile -t tarballs < <(find "$pack_dir" -maxdepth 1 -type f -name '*.tgz' -print)
+          test "${#tarballs[@]}" -eq 1
+          tarball="${tarballs[0]}"
+          echo "tarball=$tarball" >> "$GITHUB_OUTPUT"
+          sha256sum "$tarball"
+
+          cd "$smoke_dir"
+          npm init -y >/dev/null
+          npm install --ignore-scripts "$tarball"
+
+          node --input-type=module -e "
+            import UldaSign from 'ulda-core';
+            const ulda = new UldaSign();
+            const origin0 = ulda.New();
+            const witness0 = await ulda.sign(origin0);
+            const origin1 = ulda.stepUp(origin0);
+            const witness1 = await ulda.sign(origin1);
+            if (!(await ulda.verify(witness0, witness1))) {
+              throw new Error('Packed artifact failed forward verification');
+            }
+            if (await ulda.verify(witness1, witness0)) {
+              throw new Error('Packed artifact accepted reversed verification');
+            }
+          "
+
+      - name: Upload verified npm artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: npm-package-${{ github.sha }}
+          path: ${{ steps.pack.outputs.tarball }}
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
+  publish:
+    name: Publish verified package
+    needs: package
+    if: github.event_name == 'push' && github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: npm
+
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false
+
+      - name: Download verified npm artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: npm-package-${{ github.sha }}
+          path: ${{ runner.temp }}/ulda-publish
+
+      # Bootstrap only: remove NODE_AUTH_TOKEN after npm Trusted Publishing is
+      # configured for this repository, workflow, and environment.
+      - name: Publish to npm
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          publish_dir="$RUNNER_TEMP/ulda-publish"
+          mapfile -t tarballs < <(find "$publish_dir" -maxdepth 1 -type f -name '*.tgz' -print)
+          test "${#tarballs[@]}" -eq 1
+          tarball="${tarballs[0]}"
+          sha256sum "$tarball"
+
+          if [[ -z "${NODE_AUTH_TOKEN:-}" ]]; then
+            echo "NPM_BOOTSTRAP_TOKEN is not configured" >&2
+            exit 1
+          fi
+
+          npm publish "$tarball" \
+            --ignore-scripts \
+            --access public \
+            --tag latest \
+            --provenance \
+            --registry "https://registry.npmjs.org/"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_BOOTSTRAP_TOKEN }}
