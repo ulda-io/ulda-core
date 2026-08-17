@@ -166,8 +166,6 @@ jobs:
           name: npm-package-${{ github.sha }}
           path: ${{ runner.temp }}/ulda-publish
 
-      # Bootstrap only: remove NODE_AUTH_TOKEN after npm Trusted Publishing is
-      # configured for this repository, workflow, and environment.
       - name: Publish to npm
         shell: bash
         run: |
@@ -179,16 +177,9 @@ jobs:
           tarball="${tarballs[0]}"
           sha256sum "$tarball"
 
-          if [[ -z "${NODE_AUTH_TOKEN:-}" ]]; then
-            echo "NPM_BOOTSTRAP_TOKEN is not configured" >&2
-            exit 1
-          fi
-
           npm publish "$tarball" \
             --ignore-scripts \
             --access public \
             --tag latest \
             --provenance \
             --registry "https://registry.npmjs.org/"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_BOOTSTRAP_TOKEN }}
