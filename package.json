@@ -1,6 +1,6 @@
 {
   "name": "ulda-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official low-level JavaScript implementation of the ULDA v1 state-lineage protocol.",
   "author": {
     "name": "Mark Shaposhnik"

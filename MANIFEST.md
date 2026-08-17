@@ -2,10 +2,10 @@
 
 - **Protocol family:** Universal Linear Data Authentication (ULDA) v1
 - **Implementation profile:** ULDA Core JavaScript (`UldaSign`), `compactV1`
-- **Package and version:** `ulda-core@1.0.0`
+- **Package and version:** `ulda-core@1.0.1`
 - **Status:** normative release specification with integration conformance
   requirements
-- **Revision:** 2026-08-12
+- **Revision:** 2026-08-17
 
 This document defines the behavior implemented by this repository. It replaces
 earlier conceptual descriptions wherever they disagree with the code, the
@@ -169,7 +169,7 @@ authentication by the predecessor.
 
 ### 5.2 Mode X
 
-Verification MUST reject unless `g = 1`. The `1.0.0` JavaScript implementation
+Verification MUST reject unless `g = 1`. The `1.0.x` JavaScript implementation
 also requires equal total witness-body lengths and a total body length divisible
 by `N`. This makes non-default Mode X profiles whose origin-block length differs
 from the digest length subject to an additional implementation limitation.
