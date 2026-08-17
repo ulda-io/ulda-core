@@ -72,7 +72,7 @@ are not supported public import paths.
 For a version-pinned browser ESM import:
 
 ```js
-import UldaSign from "https://cdn.jsdelivr.net/npm/ulda-core@1.0.0/dist/ulda-core.min.js";
+import UldaSign from "https://cdn.jsdelivr.net/npm/ulda-core@1.0.1/dist/ulda-core.min.js";
 ```
 
 ## Development from source
@@ -140,7 +140,7 @@ the core.
 
 ## Public API
 
-The supported public API for `1.0.0` consists of four methods.
+The supported public API for the `1.0.x` release line consists of four methods.
 
 The instance also exposes compatibility facades and internal composition
 objects from the current implementation. They are unsupported implementation
@@ -209,9 +209,10 @@ Mode S is the default.
 With `N = 5`, mode S accepts transitions with gaps from one through four and
 rejects a gap of five or greater. Mode X accepts only the next index.
 
-In `1.0.0`, non-default Mode X profiles require separate review. The JavaScript
-implementation expects compatible total witness lengths and may reject a Mode
-X profile when its origin-block length differs from the digest length.
+In the `1.0.x` release line, non-default Mode X profiles require separate
+review. The JavaScript implementation expects compatible total witness lengths
+and may reject a Mode X profile when its origin-block length differs from the
+digest length.
 
 Both constructions verify overlapping commitments. The newly introduced tail
 of a candidate is not authenticated by its predecessor; later transitions
