@@ -64,3 +64,6 @@ Thumbs.db
 Desktop.ini
 
 # dist/ is intentionally versioned
+
+MARK_DISCUSSION*.md
+docs/ULDA_RELEASE.md
