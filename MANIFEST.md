@@ -36,9 +36,14 @@ In the official JavaScript API, `verify(previous, candidate)` is stateless.
 The surrounding application is responsible for retaining the last accepted
 witness and updating it atomically after successful verification.
 
-This manifest covers the low-level core only. A future high-level ULDA library
-and any ULDA server or container distribution are separate products with their
-own APIs, release cycles, security policies, and licenses.
+This manifest covers the low-level core only.
+[ULDA Auth](https://github.com/ulda-io/ulda-auth) (`ulda-auth`) provides
+client-side authenticated encryption and resource management around Core.
+[ULDA Server](https://github.com/ulda-io/ulda-server) stores opaque resources,
+verifies witness transitions, and coordinates atomic mutations and change
+notifications in its single-process deployment. These released products have
+their own APIs, release cycles, security policies, and licenses; their
+application and transport contracts are not defined by this Core manifest.
 
 ULDA is not:
 

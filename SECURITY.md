@@ -17,8 +17,10 @@ usage is documented in [README.md](README.md).
 | Prerelease and development builds earlier than `1.0.0` | Unsupported |
 | Legacy packages published under an `ulda-sign` name | Unsupported |
 
-Future high-level ULDA libraries, servers, and container distributions are
-separate products and will have their own security policies.
+The released ULDA Auth SDK (`ulda-auth`) and ULDA Server are separate products.
+Their supported releases and security boundaries are documented in the
+[SDK security policy](https://github.com/ulda-io/ulda-auth/blob/main/SECURITY.md)
+and [Server security policy](https://github.com/ulda-io/ulda-server/blob/main/SECURITY.md).
 
 ## Reporting a vulnerability
 
@@ -60,9 +62,11 @@ and distribution bundles. It covers the implementation required to:
   operations.
 
 Unofficial forks and modified packages, surrounding application code,
-third-party implementations, storage systems, deployment infrastructure, and
-future ULDA products are outside this policy unless a problem is caused by the
-ULDA Core integration boundary itself.
+third-party implementations, storage systems, deployment infrastructure,
+ULDA Auth, ULDA Server, and other separately distributed ULDA products are
+outside this policy unless a problem is caused by the ULDA Core integration
+boundary itself. Core defects remain in scope when encountered through the
+SDK or server.
 
 ## What `verify()` confirms
 
@@ -113,8 +117,15 @@ application-security layer. It must not be treated as the sole validation
 boundary for externally supplied packages. Known limitations remain in input
 validation and in the handling of non-default profiles, imported state, and
 optional or compatibility features. This policy does not claim that these
-limitations have been fixed. Some may be addressed in core updates, while
-others may be handled by a future high-level library.
+limitations have been fixed. Integrators remain responsible for the controls
+below and for reviewing the profile they accept.
+
+The Auth SDK validates its supported resource/container profile and provides
+client-side authenticated encryption. ULDA Server coordinates witness checks
+and atomic resource mutations for its documented single-writer deployment.
+These product-specific controls do not change Core's low-level guarantees or
+make arbitrary Core profiles safe. Review each product's security policy when
+using it as part of an integration.
 
 For normative profile and package-acceptance requirements, see
 [Official profile conformance](MANIFEST.md#9-official-profile-conformance).

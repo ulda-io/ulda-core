@@ -7,9 +7,12 @@ hash-linked overlap with a previously accepted witness at a permitted future
 position.
 
 The npm package name is `ulda-core`. Its default export is the `UldaSign`
-protocol class. A future high-level ULDA library and the ULDA server/container
-are separate products and are not covered by this package, its API, security
-policy, or license.
+protocol class. [ULDA Auth](https://github.com/ulda-io/ulda-auth)
+(`ulda-auth`) is the released client SDK for encrypted JSON resources.
+[ULDA Server](https://github.com/ulda-io/ulda-server) is the released
+single-process backend that stores opaque resources, checks witness transitions,
+and notifies subscribed clients. Both use Core but are separate products with
+their own APIs, release cycles, security policies, and licenses.
 
 This repository contains the protocol core itself: codecs, cryptographic
 operations, modes, runtime orchestration, deterministic test vectors, and
@@ -488,8 +491,10 @@ functionally equivalent ULDA offering requires a separate commercial license.
 The full definitions, conditions, and mandatory-law exceptions are in
 [LICENSE.md](LICENSE.md). This is not an OSI-approved open-source license.
 
-The license covers only `ulda-core`; future ULDA libraries, servers, services,
-and container products have separate terms.
+The license covers only `ulda-core`. ULDA Auth and ULDA Server have their own
+[SDK license](https://github.com/ulda-io/ulda-auth/blob/main/LICENSE.md) and
+[Server license](https://github.com/ulda-io/ulda-server/blob/main/LICENSE.md).
+Other separately distributed ULDA products and services require their own terms.
 
 ## Repository and support
 
