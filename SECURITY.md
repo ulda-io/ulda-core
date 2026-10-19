@@ -26,7 +26,7 @@ and [Server security policy](https://github.com/ulda-io/ulda-server/blob/main/SE
 
 Report suspected vulnerabilities privately by email:
 
-- **Email:** mark@shaposhnik.ch
+- **Email:** admin@ulda.io
 - **Subject:** `[SECURITY] ulda-core vulnerability report`
 
 Do not open a public issue, discussion, or pull request for a suspected

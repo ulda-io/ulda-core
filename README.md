@@ -521,5 +521,5 @@ Other separately distributed ULDA products and services require their own terms.
 - Bug reports: <https://github.com/ulda-io/ulda-core/issues>
 - Security reports: follow [SECURITY.md](SECURITY.md)
 - Commercial licensing inquiries:
-  [mark@shaposhnik.ch](mailto:mark@shaposhnik.ch)
+  [admin@ulda.io](mailto:admin@ulda.io)
 - License: see [LICENSE.md](LICENSE.md)

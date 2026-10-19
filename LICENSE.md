@@ -300,7 +300,7 @@ authorized in writing by each Licensor to license that Licensor’s respective
 rights.
 
 Commercial licensing inquiries may be sent to
-[mark@shaposhnik.ch](mailto:mark@shaposhnik.ch). This address is an
+[admin@ulda.io](mailto:admin@ulda.io). This address is an
 administrative contact only. Correspondence does not itself grant any rights;
 commercial rights arise only under a separate written agreement granted as
 described above.
