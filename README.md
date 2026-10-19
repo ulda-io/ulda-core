@@ -72,11 +72,30 @@ The package root resolves to the readable ESM bundle in `dist/ulda-core.js`.
 Files in `src/` are included for review, maintenance, and auditing, but they
 are not supported public import paths.
 
-For a version-pinned browser ESM import:
+For a version-pinned browser ESM import from jsDelivr:
+
+```html
+<script type="module">
+  import UldaSign from "https://cdn.jsdelivr.net/npm/ulda-core@1.0.1/dist/ulda-core.min.js";
+</script>
+```
+
+The same standalone file is available from UNPKG:
 
 ```js
-import UldaSign from "https://cdn.jsdelivr.net/npm/ulda-core@1.0.1/dist/ulda-core.min.js";
+import UldaSign from "https://unpkg.com/ulda-core@1.0.1/dist/ulda-core.min.js";
 ```
+
+[jsDelivr](https://www.jsdelivr.com/) and [UNPKG](https://unpkg.com/) serve public
+npm releases automatically; no separate CDN upload is needed. Keep the complete
+version and file path in the URL. Use an HTTPS page or a secure loopback
+development context for Web Crypto. These are ES modules and do not create a
+global browser variable.
+
+The [license](https://cdn.jsdelivr.net/npm/ulda-core@1.0.1/LICENSE.md) is available
+alongside the files. For self-hosting, keep the applicable license and notices
+with the bundle. Applications using the ULDA Auth standalone browser build
+already receive its bundled core dependency and do not need this separate import.
 
 ## Development from source
 
